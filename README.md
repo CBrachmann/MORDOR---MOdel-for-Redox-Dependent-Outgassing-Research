@@ -1,3 +1,3 @@
-![MORDOR logo](assets/MORDOR-LOGO.png)
+![MORDOR logo](assets/MORDOR_LOGO.png)
 
 # MORDOR
