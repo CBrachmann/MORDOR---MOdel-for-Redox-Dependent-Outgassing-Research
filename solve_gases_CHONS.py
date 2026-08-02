@@ -15,8 +15,6 @@ import numpy as np
 from scipy import optimize
 from scipy.optimize import least_squares
 from math import erf
-import sys
-sys.path.insert(1, 'C:/Users/cabra/Nextcloud/PHD/my_codes/Gibbs_energies')
 from Gibbs_E import Gibbs_E
 from FugacityC_ALL import Fugacity_C
 from initial_guess import initial_guess
