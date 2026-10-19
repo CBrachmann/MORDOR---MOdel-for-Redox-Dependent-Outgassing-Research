@@ -60,10 +60,11 @@ def C_H_N_S_partitioning(F_melt, m_H2O_mantle, m_C_mantle, m_S_mantle, m_N_mantl
     
 
         
-    'N partitioning interpolated after Li et al., 2013'
-    N_part_data = [[10**(6.899 - 27714/T + 0.05*(P-1)/T),5.53E-3], [10**(12.9850 - 25026/T -1.1786*np.log10(T) + 0.0458*(P-1)/T ),6E-4]]
-    fit = np.polyfit(N_part_data[0], N_part_data[1], 1)
-    D_N = fit[0]*f_O2 + fit[1]
+    'N partitioning interpolated after Pal and Dasgupta 2024'
+    N_part_data = [[10**(6.899 - 27714/T + 0.05*(P-1)/T -2),0.136], [10**(6.899 - 27714/T + 0.05*(P-1)/T),0.0065], [10**(6.899 - 27714/T + 0.05*(P-1)/T + 4),0.00056]]
+    x, y = np.asarray(N_part_data).T
+    fit = np.polyfit(x, y, 2)
+    D_N = np.polyval(fit, f_O2)
     
     if D_N < 0:
         D_N = 0
