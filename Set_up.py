@@ -196,7 +196,7 @@ if Degassing_style == 'Intrusive':
 
 elif Degassing_style == 'Extrusive':
     
-    XH2, XH2O, XCH4, XCO, XCO2, XS2, XSO2, XH2S, XN2, XNH3,  XH2O_melt, XCO2_melt, XS_melt, XN_mel = \
+    XH2, XH2O, XCH4, XCO, XCO2, XS2, XSO2, XH2S, XN2, XNH3,  XH2O_melt, XCO2_melt, XS_melt, XN_melt = \
             solve_gases_CHONS_ext(P, T, f_O2, buffer, mH2O, mCO2, mS, mN, Sol_H2O ,Sol_CO2, Sol_S2, Sol_S6, Sol_N, \
                                   mSiO2, mTiO2, mAl2O3, mFeO, mMgO, mCaO, mNa2O, mK2O, mMnO, Partitioning, melting_style, \
                                   F_melt, gas_behavior, PH2, PH2O, PCO, PCO2, PCH4, PS2, PSO2, PH2S, PN2)
