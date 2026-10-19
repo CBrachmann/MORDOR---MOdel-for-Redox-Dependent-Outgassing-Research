@@ -220,11 +220,8 @@ The intrusive solver returns 15 values in the order shown above. The extrusive f
 
 - **Initial-guess pressure range:** Both initial-guess routines interpolate over **10⁻⁶–10⁴ bar**. Calls outside this interval raise an interpolation error. This is a numerical input range, not a scientific validity range.
 - **Zero atmospheric pressure:** `Set_up.py` replaces a zero total pressure with `1e-10` bar, which is below that interpolation range. Several extrusive solubility expressions also evaluate logarithms of atmospheric partial pressures directly. Zero inputs can therefore generate infinities or NaNs; the zero-atmosphere case requires code-level handling.
-- **Extrusive nitrogen balance:** The current extrusive implementation sets `XN_gas = max(0, XN_melt)`. Review this inventory assignment before interpreting nitrogen release quantitatively.
 - **Approximate real-gas treatment:** `FugacityC_ALL.py` describes its coefficients as approximations and warns against pressures above **5000 bar**. N₂ and NH₃ do not receive explicit fugacity-coefficient corrections in the main solvers. The Dixon solubility options call fugacity calculations even when `gas_behavior = 'ideal'`.
-- **Sulfate pressure cap:** Part of the `'BOU'` sulfate implementation uses `min(400, P_melt)` internally. This does not cap the pressure of the entire calculation.
 - **Convergence:** The solvers use SciPy nonlinear least squares and raise `RuntimeError` when the optimizer reports failure. Optimizer success alone does not verify the physical solution; check element balances, residuals, and the applicability of the chosen laws when evaluating new conditions. The intrusive gas outputs are normalized after solving, so their sum alone is not a convergence test.
-- **Extrusive output name:** In `Set_up.py`, the final extrusive return value is assigned to `XN_mel`. This is the dissolved nitrogen output; rename it to `XN_melt` in downstream scripts if a consistent variable name is needed.
 
 ## License
 
